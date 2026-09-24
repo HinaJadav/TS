@@ -29,3 +29,7 @@ console.log(typeof name1, typeof name2, typeof name3);
 // A class can't `implements` a union alias.
 // Aliasing a primitive (`type UserId = string`) adds no real safety.
 // Doesn't exist at runtime, so it can't be checked with `typeof` or `instanceof`.
+
+
+// note : we can't reinitilize type alias after it's defined 
+// but can do with interface
