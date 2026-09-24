@@ -72,20 +72,3 @@ saveUser(user1, (isValid) => {
 getnormalInfo(user1).then((result) => {
     console.log("Async result:", result);
 });
-
-// bad behaviour when data type is object 
-function f2(obj : {
-    param1: string,
-    param2: number
-}): void {
-    console.log(obj.param1, obj.param2);
-}
-
-const obj1 = f2({
-    param1: "hello",
-    param2: 42
-});
-
-const f2obj = {param1: "world", param2: 24, param: "extra"};
-// here we pass extra property into obj-param still not getting any error --> BAD BEHAVIOUR
-console.log(f2(f2obj)); 
