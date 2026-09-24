@@ -16,7 +16,9 @@ type profileInfo = {
 // keep optional param in last 
 
 // default param : ex equity
-function profileInfo(user:user, islogin: boolean,  equity = 1.00, isVerify?: boolean): profileInfo | null{
+
+// object param : ex user
+function profileInfo(user:user, islogin: boolean, equity = 1.00, isVerify?: boolean): profileInfo | null{
     
     let userInfo: {
         name: string;
@@ -49,3 +51,24 @@ console.log(user1ProfileInfo2);
 let user1ProfileInfo3 = profileInfo(user1, true, 2.00, true);
 console.log(user1ProfileInfo3);
 
+// callback fn
+type onSubmit = (isvalid: boolean) => void;
+
+function saveUser(user:user, onSubmit:onSubmit) {
+    onSubmit(Object.keys(user).length > 0);
+}
+
+// async fn
+async function getnormalInfo(user1:user): Promise<number> {
+    return 500;
+}
+
+// callback call
+saveUser(user1, (isValid) => {
+    console.log("Callback result:", isValid);
+});
+
+// async call
+getnormalInfo(user1).then((result) => {
+    console.log("Async result:", result);
+});
